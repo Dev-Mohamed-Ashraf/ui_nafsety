@@ -3,28 +3,8 @@ import 'package:flutter/material.dart';
 import '../routes/app_routes.dart';
 import '../widgets/auth_widgets.dart';
 
-class SignupScreen extends StatefulWidget {
+class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
-
-  @override
-  State<SignupScreen> createState() => _SignupScreenState();
-}
-
-class _SignupScreenState extends State<SignupScreen> {
-  final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-
-  @override
-  void dispose() {
-    _nameController.dispose();
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
-
-  void _onGetStarted() =>
-      Navigator.pushReplacementNamed(context, AppRoutes.home);
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +31,6 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     const SizedBox(height: 32),
                     TextFormField(
-                      controller: _nameController,
                       textCapitalization: TextCapitalization.words,
                       decoration: const InputDecoration(
                         hintText: 'Enter full name',
@@ -59,19 +38,18 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     const SizedBox(height: 16),
                     TextFormField(
-                      controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
                         hintText: 'Enter email',
                       ),
                     ),
                     const SizedBox(height: 16),
-                    PasswordField(controller: _passwordController),
+                    const PasswordField(),
                     const SizedBox(height: 8),
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: null,
                         style: TextButton.styleFrom(
                           padding: EdgeInsets.zero,
                           minimumSize: Size.zero,
@@ -89,7 +67,10 @@ class _SignupScreenState extends State<SignupScreen> {
                     const SizedBox(height: 24),
                     AuthPrimaryButton(
                       label: 'Get Started',
-                      onPressed: _onGetStarted,
+                      onPressed: () => Navigator.pushReplacementNamed(
+                        context,
+                        AppRoutes.home,
+                      ),
                     ),
                     const SizedBox(height: 28),
                     const AuthDivider(label: 'Sign up with'),

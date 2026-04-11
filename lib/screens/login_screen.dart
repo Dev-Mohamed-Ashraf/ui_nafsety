@@ -3,26 +3,8 @@ import '../theme/app_colors.dart';
 import '../routes/app_routes.dart';
 import '../widgets/auth_widgets.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
-
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-  bool _rememberMe = false;
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
-
-  void _onLogin() => Navigator.pushReplacementNamed(context, AppRoutes.home);
 
   @override
   Widget build(BuildContext context) {
@@ -48,21 +30,23 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 32),
                     TextFormField(
-                      controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
                         hintText: 'Enter email',
                       ),
                     ),
                     const SizedBox(height: 16),
-                    PasswordField(controller: _passwordController),
+                    const PasswordField(),
                     const SizedBox(height: 12),
-                    _RememberMeRow(
-                      value: _rememberMe,
-                      onChanged: (v) => setState(() => _rememberMe = v),
-                    ),
+                    const _RememberMeRow(),
                     const SizedBox(height: 28),
-                    AuthPrimaryButton(label: 'Log In', onPressed: _onLogin),
+                    AuthPrimaryButton(
+                      label: 'Log In',
+                      onPressed: () => Navigator.pushReplacementNamed(
+                        context,
+                        AppRoutes.home,
+                      ),
+                    ),
                     const SizedBox(height: 28),
                     const AuthDivider(label: 'Sign in with'),
                     const SizedBox(height: 20),
@@ -89,6 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
 class _AuthCard extends StatelessWidget {
   final Widget child;
+
   const _AuthCard({required this.child});
 
   @override
@@ -155,10 +140,7 @@ class _AuthHeading extends StatelessWidget {
 }
 
 class _RememberMeRow extends StatelessWidget {
-  final bool value;
-  final ValueChanged<bool> onChanged;
-
-  const _RememberMeRow({required this.value, required this.onChanged});
+  const _RememberMeRow();
 
   @override
   Widget build(BuildContext context) {
@@ -171,11 +153,11 @@ class _RememberMeRow extends StatelessWidget {
               width: 20,
               height: 20,
               child: Checkbox(
-                value: value,
+                value: true,
                 activeColor: const Color(0xFFE04343),
                 checkColor: Colors.white,
                 side: const BorderSide(color: Color(0xFFE04343)),
-                onChanged: (v) => onChanged(v ?? false),
+                onChanged: null,
               ),
             ),
             const SizedBox(width: 6),
@@ -186,7 +168,7 @@ class _RememberMeRow extends StatelessWidget {
           ],
         ),
         TextButton(
-          onPressed: () {},
+          onPressed: null,
           style: TextButton.styleFrom(
             padding: EdgeInsets.zero,
             minimumSize: Size.zero,

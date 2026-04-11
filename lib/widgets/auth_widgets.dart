@@ -111,14 +111,9 @@ class AuthPrimaryButton extends StatelessWidget {
 }
 
 class PasswordField extends StatefulWidget {
-  final TextEditingController controller;
   final String hint;
 
-  const PasswordField({
-    super.key,
-    required this.controller,
-    this.hint = 'Password',
-  });
+  const PasswordField({super.key, this.hint = 'Password'});
 
   @override
   State<PasswordField> createState() => _PasswordFieldState();
@@ -126,11 +121,18 @@ class PasswordField extends StatefulWidget {
 
 class _PasswordFieldState extends State<PasswordField> {
   bool _obscure = true;
+  final TextEditingController _controller = TextEditingController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: widget.controller,
+      controller: _controller,
       obscureText: _obscure,
       decoration: InputDecoration(
         hintText: widget.hint,

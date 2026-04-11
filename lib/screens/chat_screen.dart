@@ -8,7 +8,7 @@ class ChatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors
-          .lightBackground, // Or whatever the light blue background color is
+          .lightBackground, 
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -24,11 +24,7 @@ class ChatScreen extends StatelessWidget {
                 color: AppColors.textPrimary,
                 size: 20,
               ),
-              onPressed: () {
-                // Navigation handled by the main shell if it's a tab,
-                // but if pushed directly, this handles the back.
-                // In the context of tabs, maybe hide the back button or make it switch to tab 0.
-              },
+              onPressed: () => Navigator.maybePop(context),
             ),
           ),
         ),
@@ -111,7 +107,7 @@ class _ChatInputArea extends StatelessWidget {
         8,
         24,
         24,
-      ), // padding bottom for safe area
+      ), 
       decoration: const BoxDecoration(color: Colors.transparent),
       child: Container(
         decoration: BoxDecoration(

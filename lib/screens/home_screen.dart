@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_assets.dart';
-
 import '../screens/chat_screen.dart';
+import '../screens/progress_screen.dart';
+import '../screens/settings_screen.dart';
 
 class MainShellScreen extends StatefulWidget {
   const MainShellScreen({super.key});
@@ -17,8 +18,8 @@ class _MainShellScreenState extends State<MainShellScreen> {
   final List<Widget> _pages = const [
     _HomeTab(),
     ChatScreen(),
-    Scaffold(body: Center(child: Text("Progressing Screen"))), // Placeholder
-    Scaffold(body: Center(child: Text("Settings Screen"))), // Placeholder
+    ProgressScreen(),
+    SettingsScreen(),
   ];
 
   @override
@@ -412,7 +413,7 @@ class _BottomNav extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           decoration: BoxDecoration(
-            color: const Color(0xFF0F172A), // Dark blue/black as per screenshot
+            color: const Color(0xFF0F172A),
             borderRadius: BorderRadius.circular(40),
             boxShadow: [
               BoxShadow(
