@@ -9,63 +9,71 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF008657),
-      body: Column(
-        children: [
-          const AuthTopBar(),
-          Expanded(
-            child: _AuthCard(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 28,
-                  vertical: 36,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const _AuthHeading(
-                      title: 'Welcome Back',
-                      subtitle: 'Ready to continue your learning journey?',
-                      boldSuffix: 'Your path is right here.',
-                    ),
-                    const SizedBox(height: 32),
-                    TextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: const InputDecoration(
-                        hintText: 'Enter email',
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+            colors: [
+              Color(0xFF4A6CF7),
+              Color(0xFF0FA3B1),
+              Color(0xFF00A878),
+            ],
+          ),
+        ),
+        child: Column(
+          children: [
+            const AuthTopBar(),
+            Expanded(
+              child: _AuthCard(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 28,
+                    vertical: 36,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      const _AuthHeading(
+                        title: 'Welcome Back',
+                        subtitle: 'Ready to continue your learning journey?',
+                        boldSuffix: 'Your path is right here.',
                       ),
-                    ),
-                    const SizedBox(height: 16),
-                    const PasswordField(),
-                    const SizedBox(height: 12),
-                    const _RememberMeRow(),
-                    const SizedBox(height: 28),
-                    AuthPrimaryButton(
-                      label: 'Log In',
-                      onPressed: () => Navigator.pushReplacementNamed(
-                        context,
-                        AppRoutes.home,
+                      const SizedBox(height: 32),
+                      TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: const InputDecoration(
+                          hintText: 'Enter email',
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 28),
-                    const AuthDivider(label: 'Sign in with'),
-                    const SizedBox(height: 20),
-                    const GoogleSignInButton(),
-                    const SizedBox(height: 28),
-                    _AuthFooterLink(
-                      question: "Don't have an account? ",
-                      linkText: 'Sign up',
-                      onTap: () => Navigator.pushReplacementNamed(
-                        context,
-                        AppRoutes.signup,
+                      const SizedBox(height: 16),
+                      const PasswordField(),
+                      const SizedBox(height: 12),
+                      const _RememberMeRow(),
+                      const SizedBox(height: 28),
+                      AuthPrimaryButton(
+                        label: 'Log In',
+                        onPressed: () => Navigator.pushReplacementNamed(
+                          context,
+                          AppRoutes.home,
+                        ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 28),
+                      _AuthFooterLink(
+                        question: "Don't have an account? ",
+                        linkText: 'Sign up',
+                        onTap: () => Navigator.pushReplacementNamed(
+                          context,
+                          AppRoutes.signup,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

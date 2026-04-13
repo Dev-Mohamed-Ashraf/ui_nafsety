@@ -9,88 +9,100 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF008657),
-      body: Column(
-        children: [
-          const AuthTopBar(),
-          Expanded(
-            child: AuthCard(
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 28,
-                  vertical: 36,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const AuthHeading(
-                      title: 'Create Your Account',
-                      subtitle:
-                          "We're here to help you reach the peaks of learning.",
-                      boldSuffix: 'Are you ready?',
-                    ),
-                    const SizedBox(height: 32),
-                    TextFormField(
-                      textCapitalization: TextCapitalization.words,
-                      decoration: const InputDecoration(
-                        hintText: 'Enter full name',
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+            colors: [
+              Color(0xFF4A6CF7),
+              Color(0xFF0FA3B1),
+              Color(0xFF00A878),
+            ],
+          ),
+        ),
+        child: Column(
+          children: [
+            const AuthTopBar(),
+            Expanded(
+              child: AuthCard(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 28,
+                    vertical: 36,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      const AuthHeading(
+                        title: 'Create Your Account',
+                        subtitle:
+                            "We're here to help you reach the peaks of learning.",
+                        boldSuffix: 'Are you ready?',
                       ),
-                    ),
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: const InputDecoration(
-                        hintText: 'Enter email',
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    const PasswordField(),
-                    const SizedBox(height: 8),
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        onPressed: null,
-                        style: TextButton.styleFrom(
-                          padding: EdgeInsets.zero,
-                          minimumSize: Size.zero,
-                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      const SizedBox(height: 32),
+                      TextFormField(
+                        textCapitalization: TextCapitalization.words,
+                        decoration: const InputDecoration(
+                          hintText: 'Enter full name',
                         ),
-                        child: const Text(
-                          'Forget password?',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Color(0xFFE04343),
+                      ),
+                      const SizedBox(height: 16),
+                      TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: const InputDecoration(
+                          hintText: 'Enter email',
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      const PasswordField(),
+                      const SizedBox(height: 8),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: TextButton(
+                          onPressed: null,
+                          style: TextButton.styleFrom(
+                            padding: EdgeInsets.zero,
+                            minimumSize: Size.zero,
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          ),
+                          child: const Text(
+                            'Forget password?',
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xFFE04343),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 24),
-                    AuthPrimaryButton(
-                      label: 'Get Started',
-                      onPressed: () => Navigator.pushReplacementNamed(
-                        context,
-                        AppRoutes.home,
+                      const SizedBox(height: 24),
+                      AuthPrimaryButton(
+                        label: 'Get Started',
+                        onPressed: () => Navigator.pushReplacementNamed(
+                          context,
+                          AppRoutes.home,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 28),
-                    const AuthDivider(label: 'Sign up with'),
-                    const SizedBox(height: 20),
-                    const GoogleSignInButton(),
-                    const SizedBox(height: 28),
-                    AuthFooterLink(
-                      question: 'Already have an account? ',
-                      linkText: 'Log in',
-                      onTap: () => Navigator.pushReplacementNamed(
-                        context,
-                        AppRoutes.login,
+                      const SizedBox(height: 28),
+                      const AuthDivider(label: 'Sign up with'),
+                      const SizedBox(height: 20),
+                      const GoogleSignInButton(),
+                      const SizedBox(height: 28),
+                      AuthFooterLink(
+                        question: 'Already have an account? ',
+                        linkText: 'Log in',
+                        onTap: () => Navigator.pushReplacementNamed(
+                          context,
+                          AppRoutes.login,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
